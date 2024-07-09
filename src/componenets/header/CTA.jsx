@@ -1,6 +1,6 @@
 //import React from 'react'
 import CV from '../../assets/cv.pdf'
-const CTA = () => {
+export default function CTA () {
   return (
     <div className='cta'>
         <a href={CV} download={true} className='btn'>Downloat cv</a>
@@ -10,4 +10,3 @@ const CTA = () => {
   )
 }
 
-export default CTA
