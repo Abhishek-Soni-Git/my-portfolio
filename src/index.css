@@ -33,8 +33,19 @@ body{
     background: var(--color-bg);
     color:var(--color-white);
     line-height: 1.7;
-    background-image:url(../src/assets/forest-7543646_640.jpg) ;
+    background-image:url(../src/assets/black.png) ;
+    width: 100%;
 
+}
+
+.nav-bar{
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    bottom: 0px;
+    padding-bottom: 20px;
 }
 .container{
     width: var(--container-width-lg);
@@ -48,7 +59,8 @@ h1{
     font-size: 2.5rem;
 }
 section{
-    margin-top: 8rem;
+    margin-top: 20px;
+    height: 90vh;
 }
 section > h2, section > h5{
     text-align: center;
@@ -56,7 +68,7 @@ section > h2, section > h5{
 }
 section > h2{
     color:var(--color-primary);
-    margin-bottom: 3rem;
+    margin-bottom: 3px;
 }
 .text-light{
     color: var(--color-light);
@@ -64,6 +76,25 @@ section > h2{
 a{
     color:var(--color-primary);
     transition: var(--transition);
+   
+}
+.pi-container{
+    display: flex;
+    justify-content: center;
+}
+#pi{
+    /* background: linear-gradient(var(--color-primary),transparent); */
+    /*position: absolute;*/
+    margin-top: 3rem;
+    display: block;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: 0 0;
+    border-radius: 50%;
+    padding: 1.5rem; 
+    /* left: calc(50% -11rem); */
+
    
 }
 a:hover{
@@ -88,11 +119,7 @@ a:hover{
     background: var(--color-primary);
     color: var(--color-bg);
 }
-img{
-    display: block;
-    width: 100%;
-    object-fit: cover;
-}
+
 
 @media screen and (max-width: 1024px) {
     .container{

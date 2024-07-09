@@ -1,13 +1,11 @@
 //import { useState } from 'react'
 import Header from './componenets/header/Header'
-import Footer from'./componenets/footer/Footer'
-import About from './componenets/about/About'
-import Contact from './componenets/contact/Contact'
 import Nav from './componenets/nav/Nav'
-import Experience from './componenets/nav/Experience'
-import Service from './componenets/services/Service'
-import Portfolio from './componenets/portfolio/Portfolio'
-import Testimonials from './componenets/testimonials/Testimonials'
+import About from './componenets/about/About'
+import Skill from './componenets/Skills/skill'
+import Project from './componenets/projects/Project'
+import Contact from './componenets/contact/Contact'
+import Footer from'./componenets/footer/Footer'
 
 
 
@@ -16,14 +14,14 @@ function App() {
   return (
     <>
       <Header/>
-      <Footer />
+      <div className='nav-bar'>
+        <Nav />
+      </div>
       <About />
+      <Skill />
+      <Project />
       <Contact />
-      <Nav />
-      <Experience />
-      <Service />
-      <Portfolio />
-      <Testimonials />
+      <Footer />
     </>
   )
 }

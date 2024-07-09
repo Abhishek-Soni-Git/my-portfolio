@@ -3,8 +3,8 @@ import CV from '../../assets/cv.pdf'
 export default function CTA () {
   return (
     <div className='cta'>
-        <a href={CV} download={true} className='btn'>Downloat cv</a>
-        <a href="#contact" className="btn btn-primary">Let Talk</a>
+        <a href={CV} download={true} className='btn'>Downloat CV</a>
+        <a href="#contact" className="btn btn-primary">Let's Talk</a>
 
     </div>
   )
