@@ -1,4 +1,53 @@
 #footer{
+    margin: px;
     height: fit-content;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
+    text-align: center;
+   
+}
+.foot{
+    background: var(--color-bg-variant);
+    border-radius: 1.2px;
+    border: 1px solid transparent;
+   
+}
+@media screen and (max-width: 1024px) {
+    .md\:text-base {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    
+    
+ 
+ }
+ @media screen and (max-width: 600px){
+    .md\:gap-2 {
+        gap: .5rem;
+    }
+   
+    
+ }
+
+
+
+
+
+.text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.text-\[20px\] {
+    font-size: 20px;
+}
+.gap-1 {
+    gap: .25rem;
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.flex {
+    display: flex;
 }
