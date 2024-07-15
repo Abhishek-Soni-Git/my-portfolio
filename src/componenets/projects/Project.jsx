@@ -1,5 +1,6 @@
 // import React from 'react'
 import './project.css'
+import HM from '../../assets/hp.png';
 export default function Project() {
   return (
     <section id='project' >
@@ -7,7 +8,7 @@ export default function Project() {
       <h2>My Projects</h2>
       <div className='project_container'>
         <div className='project'>
-          <img className='image_pro' src="/src/assets/hp.png" alt="" />
+          <img className='image_pro' src={HM} alt="" />
           <h2 className='project-head'>Online Hotel Room Booking</h2>
           
       
