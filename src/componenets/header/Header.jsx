@@ -1,7 +1,6 @@
 //import React from 'react'
 import './header.css'
 import CTA from './CTA'
-import HeaderSocials from './HeaderSocials'
 import ME from '../../assets/me.jpg'
 
 export default function Header() {
@@ -11,7 +10,6 @@ export default function Header() {
       <h1>Abhishek soni</h1>
       <h5 className="profesion">Software Developer</h5>
       <CTA />
-      <HeaderSocials/>
       <div className='pi-container'>
          <img id='pi' src={ME} alt=""/>
       </div>
