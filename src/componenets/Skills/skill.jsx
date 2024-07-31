@@ -66,17 +66,17 @@ export default function skill() {
             </article>
             <article className='skill_details'>
                 <LuBadgeCheck/>
-                <h4>MONGODB</h4>
+                <h4>MongoDB</h4>
                 <small className='text_light'></small>
             </article>
             <article className='skill_details'>
                 <LuBadgeCheck/>
-                <h4>NODE JS</h4>
+                <h4>NODE.JS</h4>
                 <small className='text_light'></small>
             </article>
             <article className='skill_details'>
                 <LuBadgeCheck/>
-                <h4>MY SQL</h4>
+                <h4>MySQL</h4>
                 <small className='text_light'></small>
             </article>
           </div>
