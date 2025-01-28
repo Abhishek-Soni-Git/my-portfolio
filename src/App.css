@@ -1,0 +1,11 @@
+.App {
+    
+  }
+  
+  .App.light {
+    color: black;
+  }
+  
+  .App.dark {
+    color: white;
+  }

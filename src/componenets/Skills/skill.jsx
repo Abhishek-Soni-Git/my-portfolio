@@ -1,6 +1,7 @@
 // import React from 'react'
 import { LuBadgeCheck } from 'react-icons/lu'
 import './skill.css'
+import ht from '../../assets/HTML5_logo_and_wordmark.svg.png';
 
 export default function skill() {
   return (
@@ -13,6 +14,7 @@ export default function skill() {
           <h3>Frontend Development</h3>
           <div className='skill_content'>
             <article className='skill_details'>
+
                 <LuBadgeCheck/>
                 <h4>HTML</h4>
                 <small className='text_light'></small>
