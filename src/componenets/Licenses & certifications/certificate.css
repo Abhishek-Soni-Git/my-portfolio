@@ -1,0 +1,55 @@
+#certificates {
+    padding: 2rem 0;
+    text-align: center;
+    height: fit-content;
+
+}
+
+.certificate_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 20px;
+
+}
+
+.certificate_card {
+    background: var(--color-bg-variant);
+    padding: 2rem; /* Increased padding for better spacing */
+    border-radius: 1.5rem;
+    border: 1px solid var(--color-primary);
+    text-align: center;
+    width: 600px; /* Defined width for consistency */
+    height: 500px; /* Increased height to fit content properly */
+}
+
+.certificate_card img {
+    width: 500px;
+    height: 500px;/* Increased image height */
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.certificate_card h4 {
+    margin-top: 15px;
+    color: white;
+    font-size: 1.2rem; /* Slightly increased font size */
+}
+
+@media screen and (max-width: 1024px) {
+    .skill_container {
+        grid-template-columns: 1fr 1fr;
+    }
+    .certificate_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .skill_container {
+        grid-template-columns: 1fr;
+    }
+    .certificate_container {
+        grid-template-columns: 1fr;
+    }
+}

@@ -6,6 +6,7 @@ import Skill from './componenets/Skills/skill'
 import Project from './componenets/projects/Project'
 import Contact from './componenets/contact/Contact'
 import Footer from'./componenets/footer/Footer'
+import Certificates  from './componenets/Licenses & certifications/certificate'
 
 
 
@@ -20,6 +21,7 @@ function App() {
       <About />
       <Skill />
       <Project />
+      <Certificates />
       <Contact />
       <Footer />
     </>

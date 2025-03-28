@@ -31,38 +31,85 @@ export default function Skill() {
         <div className='skill_frontend'>
           <h3>Frontend Development</h3>
           <div className='skill_content'>
-           <img className='skill_details' src={h} alt=""/><h4>HTML</h4>
-           <img className='skill_details' src={css} alt=""/><h4>CSS</h4>
-           <img className='skill_details' src={js} alt=""/><h4>JavaScript</h4>
-           <img className='skill_details' src={tail} alt=""/><h4>Tailwind CSS</h4>
-           <img className='skill_details' src={React} alt=""/> <h4>ReactJS</h4>
+            <div className='skill_details'>
+              <img src={h} alt="" />
+              <h4>HTML</h4>
+            </div>
+            <div className='skill_details' >
+              <img src={css} alt="" />
+              <h4>CSS</h4>
+            </div>
+            <div className='skill_details' >
+              <img src={js} alt="" />
+              <h4>JavaScript</h4>
+            </div>
+            <div className='skill_details' >
+              <img src={tail} alt="" />
+              <h4>Tailwind CSS</h4>
+            </div>
+            <div className='skill_details' >
+              <img src={React} alt="" />
+              <h4>ReactJS</h4>
+            </div>
           </div>
         </div>
-        
+
         {/* Backend Development */}
         <div className='skill_backend'>
           <h3 className='name'>Backend Development</h3>
           <div className='skill_content'>
-          <img className='skill_details' src={c} alt=""/><h4>C</h4>
-          <img className='skill_details' src={df} alt=""/><h4>C++</h4>
-          <img className='skill_details' src={java} alt=""/><h4>Java</h4>
-          <img className='skill_details' src={py} alt=""/><h4>Python</h4>
-            <img className='skill_details' src={Mongodb} alt=""/><h4>MongoDB</h4>
-            <img className='skill_details' src={my} alt=""/><h4>MySQL</h4>
-            <img className='skill_details' src={nodejs} alt=""/><h4>Node.js</h4>
+            <div className='skill_details' >
+            <img src={c} alt="" /><h4>C</h4>
+            </div>
+            <div className='skill_details' >
+            <img src={df} alt="" /><h4>C++</h4>
+            </div>
+            <div className='skill_details' >
+            <img src={java} alt="" /><h4>Java</h4>
+            </div>
+            <div className='skill_details' >
+            <img src={py} alt="" /><h4>Python</h4>
+            </div>
+            <div className='skill_details' >
+            <img src={Mongodb} alt="" /><h4>MongoDB</h4>
+            </div>
+            <div className='skill_details' >
+            <img src={my} alt="" /><h4>MySQL</h4>
+            </div>
+            <div className='skill_details' >
+            <img src={nodejs} alt="" /><h4>Node.js</h4>
+            </div>
           </div>
         </div>
-        
+
         {/* DevOps & Cloud */}
         <div className='skill_devops'>
           <h3 className='name'>DevOps & Cloud</h3>
           <div className='skill_content'>
-          <img className='skill_details' src={aws} alt=""/><h4>AWS</h4>
-          <img className='skill_details' src={tra} alt=""/><h4>Terraform</h4>
-          <img className='skill_details' src={c} alt=""/><h4>Jenkins</h4>
-          <img className='skill_details' src={git} alt=""/><h4>Git</h4>
-          <img className='skill_details' src={gi} alt=""/><h4>GitHub</h4>
-          <img className='skill_details' src={red} alt=""/><h4>RedHat Linux</h4>
+            <div className='skill_details' >
+            <img  src={aws} alt="" />
+            <h4>AWS</h4>
+            </div>
+            <div className='skill_details' >
+            <img  src={tra} alt="" />
+            <h4>Terraform</h4>
+            </div>
+            <div className='skill_details' >
+            <img  src={c} alt="" />
+            <h4>Jenkins</h4>
+            </div>
+            <div className='skill_details' >
+            <img  src={git} alt="" />
+            <h4>Git</h4>
+            </div>
+            <div className='skill_details' >
+            <img  src={gi} alt="" />
+            <h4>GitHub</h4>
+            </div>
+            <div className='skill_details' >
+            <img  src={red} alt="" />
+            <h4>RedHat Linux</h4>
+            </div> 
           </div>
         </div>
       </div>

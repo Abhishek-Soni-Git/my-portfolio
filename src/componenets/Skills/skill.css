@@ -7,12 +7,13 @@
 .skill_container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+    gap: 1px;
     padding: 10px;
+    align-items: center;
 }
 
 .skill_container > div {
-    width: 30rem; 
+    width: 26rem; 
     height: auto; 
     padding: 2rem;
     border-radius: 1.5rem;
@@ -39,13 +40,21 @@
 
 .skill_details {
     display: flex;
-    gap: 10px;
-    align-items:flex-start;
-    font-size: 1.1rem;
-    width: 8rem; 
-    height: 8rem;
-    object-fit: contain;
+    flex-direction: column; /* Stack image and text */
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+}
 
+.skill_details img {
+    width: 110px; /* Adjust image size */
+    height: 110px;
+    object-fit: contain;
+}
+
+.skill_details h4 {
+    color: white;
+    font-size: 1rem;
 }
 @media screen and (max-width: 1024px) {
     .skill_container {
