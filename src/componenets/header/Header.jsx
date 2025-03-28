@@ -8,7 +8,7 @@ export default function Header() {
     <section className= "container header_container">
       <h5 className='intro'>Hello i am</h5>
       <h1>Abhishek soni</h1>
-      <h5 className="profesion">Software Developer</h5>
+      <h5 className="profesion">Devops Engineer</h5>
       <CTA />
       <div className='pi-container'>
          <img id='pi' src={ME} alt=""/>

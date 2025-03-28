@@ -1,66 +1,60 @@
-#skill{
+/* Skill Section CSS */
+#skill {
     height: fit-content;
+    padding: 2rem 0;
 }
-.skill_container{
+
+.skill_container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    bottom: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
     padding: 10px;
 }
-.skill_container>div{
-    background: var(--color-bg-variant);
-    padding: 3rem 5rem;
-    border-radius: 2rem;
-    border: 1px solid;
+
+.skill_container > div {
+    width: 30rem; 
+    height: auto; 
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--color-primary);
     background: transparent;
-}
-.skill_container>div h3{
     text-align: center;
+    overflow: visible; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skill_container > div h3 {
     margin-bottom: 20px;
     color: var(--color-primary);
 }
-.skill_content{
-    /* display: grid;
-    grid-template-columns: 1fr 1fr; */
-    row-gap: 10px;
+
+.skill_content {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    flex-direction: column;
-    height: 150px;
+    height: auto;
 }
-.skill_details{
+
+.skill_details {
     display: flex;
-    gap: 5px;
-    align-items: center;
+    gap: 10px;
+    align-items:flex-start;
+    font-size: 1.1rem;
+    width: 8rem; 
+    height: 8rem;
+    object-fit: contain;
 
 }
 @media screen and (max-width: 1024px) {
-    .skill_container{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    .skill_container>div{
-        padding: 20px;
-    }
-    
-    
- 
- }
- @media screen and (max-width: 600px){
     .skill_container {
-       display: flex;
-       flex-direction: column;
-       gap: 10px;
+        grid-template-columns: 1fr 1fr;
     }
-    .skill_container>div{
-        padding: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .skill_container {
+        grid-template-columns: 1fr;
     }
-   
-    
- }
-   
-
-
+}
