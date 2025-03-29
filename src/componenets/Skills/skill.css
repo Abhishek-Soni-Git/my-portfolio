@@ -2,13 +2,14 @@
 #skill {
     height: fit-content;
     padding: 2rem 0;
+    gap: 4px;
 }
 
 .skill_container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1px;
-    padding: 9px;
+    /* gap: 0px; */
+    padding: 7px;
     align-items: center;
 }
 

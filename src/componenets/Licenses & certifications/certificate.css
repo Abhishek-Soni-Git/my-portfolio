@@ -1,55 +1,79 @@
+/* General Styling */
 #certificates {
-    padding: 2rem 0;
+    padding: 4rem 2rem;
     text-align: center;
+    margin: 10px;
     height: fit-content;
 
 }
 
-.certificate_container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 20px;
+#certificates h2 {
+    font-size: 2rem;
+    color: #3a91e4;
+    margin-bottom: 2rem;
+}
 
+/* Certificate Container */
+.certificate_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 400%;
+    max-width: 1297px;
+    margin: 0 auto;
+}
+
+/* Certificate Cards */
+.certificate {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Adjust grid */
+    gap: 130px;
+    width: 100%;
+    justify-content: center;
 }
 
 .certificate_card {
-    background: var(--color-bg-variant);
-    padding: 2rem; /* Increased padding for better spacing */
-    border-radius: 1.5rem;
-    border: 1px solid var(--color-primary);
-    text-align: center;
-    width: 600px; /* Defined width for consistency */
-    height: 500px; /* Increased height to fit content properly */
-}
-
-.certificate_card img {
-    width: 500px;
-    height: 500px;/* Increased image height */
-    object-fit: contain;
+    background: #1e1e1e;
+    /* Dark theme */
     border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    /* Soft glow effect */
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    width: 400px;
+    height: 300px;
+    max-width:1000pxpx;
 }
 
+.certificate_card:hover {
+    transform: translateY(-5px);
+}
+
+/* Certificate Image */
+.certificate_card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Certificate Title */
 .certificate_card h4 {
-    margin-top: 15px;
-    color: white;
-    font-size: 1.2rem; /* Slightly increased font size */
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #fff;
+    background: #272727;
+    border-radius: 0 0 10px 10px;
 }
 
-@media screen and (max-width: 1024px) {
-    .skill_container {
-        grid-template-columns: 1fr 1fr;
-    }
-    .certificate_container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .skill_container {
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .certificate {
         grid-template-columns: 1fr;
-    }
-    .certificate_container {
-        grid-template-columns: 1fr;
+        /* Full width on small screens */
     }
 }

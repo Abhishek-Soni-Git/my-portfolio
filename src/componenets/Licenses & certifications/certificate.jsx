@@ -6,11 +6,12 @@ import da from '../../assets/data.jpg'
 import python from '../../assets/thoin.jpg'
 import sec from '../../assets/sec.jpg'
 
-export default function Certificates () {
+export default function Certificates() {
   return (
     <section id="certificates">
       <h2>My Certificates</h2>
       <div className="certificate_container">
+        <div className="certificate">
           <div className="certificate_card">
             <img src={Cloud} alt="" />
             <h4></h4>
@@ -31,6 +32,7 @@ export default function Certificates () {
             <img src={da} alt="" />
             <h4></h4>
           </div>
+        </div>
       </div>
     </section>
   );
