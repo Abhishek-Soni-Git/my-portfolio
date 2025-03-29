@@ -8,12 +8,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1px;
-    padding: 10px;
+    padding: 9px;
     align-items: center;
 }
 
 .skill_container > div {
-    width: 26rem; 
+    width: 24rem; 
     height: auto; 
     padding: 2rem;
     border-radius: 1.5rem;
@@ -47,8 +47,8 @@
 }
 
 .skill_details img {
-    width: 110px; /* Adjust image size */
-    height: 110px;
+    width: 90px; /* Adjust image size */
+    height: 90px;
     object-fit: contain;
 }
 
