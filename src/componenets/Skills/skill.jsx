@@ -18,7 +18,7 @@ import gi from '../../assets/github.jpg'
 import Mongodb from '../../assets/mongodb.png'
 import red from '../../assets/redhat linux.jpeg'
 import my from '../../assets/mysql.png'
-
+import jan from '../../assets/Jenkins.png' 
 
 export default function Skill() {
   return (
@@ -95,7 +95,7 @@ export default function Skill() {
             <h4>Terraform</h4>
             </div>
             <div className='skill_details' >
-            <img  src={c} alt="" />
+            <img  src={jan} alt="" />
             <h4>Jenkins</h4>
             </div>
             <div className='skill_details' >
