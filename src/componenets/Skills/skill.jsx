@@ -19,6 +19,7 @@ import Mongodb from '../../assets/mongodb.png'
 import red from '../../assets/redhat linux.jpeg'
 import my from '../../assets/mysql.png'
 import jan from '../../assets/Jenkins.png' 
+import Docker from '../../assets/docker.png'
 
 export default function Skill() {
   return (
@@ -93,6 +94,10 @@ export default function Skill() {
             <div className='skill_details' >
             <img  src={tra} alt="" />
             <h4>Terraform</h4>
+            </div>
+            <div className='skill_details' >
+            <img  src={Docker} alt="" />
+            <h4>Docker</h4>
             </div>
             <div className='skill_details' >
             <img  src={jan} alt="" />
