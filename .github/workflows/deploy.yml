@@ -3,7 +3,7 @@ name: Deploy Portfolio to Azure
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-deploy:
