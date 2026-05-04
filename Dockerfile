@@ -1,11 +1,26 @@
-FROM node:18-alpine AS build
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
+FROM node:18
 
-FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+WORKDIR /app
+
+# Create user
+RUN groupadd appgroup && useradd -g appgroup -m appuser
+
+# Copy package files
+COPY package*.json ./
+
+# Install as ROOT (IMPORTANT)
+RUN npm install
+
+# Copy code
+COPY . .
+
+# Fix permissions
+RUN chown -R appuser:appgroup /app
+
+# Switch user
+USER appuser
+
+EXPOSE 8080
+
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "8080"]
+
