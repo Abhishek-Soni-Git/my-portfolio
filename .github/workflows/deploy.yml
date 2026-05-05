@@ -27,7 +27,7 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.ACR_LOGIN_SERVER }}/portfolio:latest
-          
+
       - name: Deploy to Staging Slot
         uses: azure/webapps-deploy@v2
         with:
@@ -39,8 +39,8 @@ jobs:
   # Job 2 — Staging Theek Hone Ke Baad Production Pe
   deploy-production:
     runs-on: ubuntu-latest
-    needs: deploy-staging        # staging success hone ke baad chalega
-    environment: production      # manual approval lagega
+    needs: deploy-staging
+    environment: production
 
     steps:
       - name: Deploy to Production
