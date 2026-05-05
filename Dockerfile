@@ -1,26 +1,29 @@
-FROM node:18
+# Stage 1 — Build Stage
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Create user
-RUN groupadd appgroup && useradd -g appgroup -m appuser
-
-# Copy package files
 COPY package*.json ./
 
-# Install as ROOT (IMPORTANT)
-RUN npm install
+# --omit=dev mat karo — vite devDependency hai
+RUN npm ci
 
-# Copy code
 COPY . .
+RUN npm run build
 
-# Fix permissions
-RUN chown -R appuser:appgroup /app
+# Stage 2 — Production Stage
+FROM node:18-alpine
 
-# Switch user
+WORKDIR /app
+
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+RUN npm install -g serve
+
+COPY --from=builder --chown=appuser:appgroup /app/dist ./dist
+
 USER appuser
 
 EXPOSE 8080
 
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "8080"]
-
+CMD ["serve", "-s", "dist", "-l", "8080"]
