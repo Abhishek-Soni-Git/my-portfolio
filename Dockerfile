@@ -3,6 +3,12 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
+# Build time variables
+ARG VITE_APP_NAME
+ARG VITE_APP_ENV
+ENV VITE_APP_NAME=$VITE_APP_NAME
+ENV VITE_APP_ENV=$VITE_APP_ENV
+
 COPY package*.json ./
 
 # --omit=dev mat karo — vite devDependency hai
