@@ -33,7 +33,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          slot-name: abhi-abhi 
+          slot-name: abhi
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
           images: ${{ secrets.ACR_LOGIN_SERVER }}/portfolio:latest
 
