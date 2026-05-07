@@ -16,28 +16,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Setup Node.js
+      # Setup Node.js + Azure Artifacts
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          registry-url: 'https://pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/'
+          scope: '@abhisheksoni0554'
 
-      # Install dependencies from npmjs
+      # Install dependencies
       - name: Install Dependencies
         run: npm install
 
-      # Publish shared-utils package to Azure Artifacts
+      # Publish shared-utils package
       - name: Publish shared-utils
         run: |
           cd shared-utils
-
-          echo "registry=https://pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/" > .npmrc
-          echo "always-auth=true" >> .npmrc
-          echo "//pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/:username=anything" >> .npmrc
-          echo "//pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/:_password=$(printf "%s" "${{ secrets.AZURE_ARTIFACTS_TOKEN }}" | base64)" >> .npmrc
-          echo "//pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/:email=anything@example.com" >> .npmrc
-
-          npm publish --registry https://pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.AZURE_ARTIFACTS_TOKEN }}
 
       # Login to Azure Container Registry
       - name: Login to ACR
