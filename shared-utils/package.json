@@ -1,0 +1,9 @@
+{
+  "name": "@abhi/shared-utils",
+  "version": "1.0.0",
+  "description": "Reusable utility package for React apps",
+  "main": "index.js",
+  "type": "module",
+  "author": "Abhishek",
+  "license": "MIT"
+}
