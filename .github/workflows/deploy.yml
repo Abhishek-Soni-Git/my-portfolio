@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  # Job 1 — Pehle Staging Pe Deploy
+  # Job 1 — Staging Deploy
   deploy-staging:
     runs-on: ubuntu-latest
     environment: staging
@@ -15,6 +15,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Azure Artifacts ke liye Node setup
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          registry-url: 'https://pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/'
+
+      # Dependencies install
+      - name: Install Dependencies
+        run: npm install
+
+      # shared-utils package publish
+      - name: Publish shared-utils
+        run: |
+          cd shared-utils
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.AZURE_ARTIFACTS_TOKEN }}
+
+      # ACR login
       - name: Login to ACR
         uses: docker/login-action@v2
         with:
@@ -22,13 +42,18 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
+      # Docker image build & push
       - name: Build and push image
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
           tags: ${{ secrets.ACR_LOGIN_SERVER }}/portfolio:latest
+          build-args: |
+            VITE_APP_NAME=${{ vars.VITE_APP_NAME }}
+            VITE_APP_ENV=${{ vars.VITE_APP_ENV }}
 
+      # Staging deploy
       - name: Deploy to Staging Slot
         uses: azure/webapps-deploy@v2
         with:
@@ -37,7 +62,7 @@ jobs:
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
           images: ${{ secrets.ACR_LOGIN_SERVER }}/portfolio:latest
 
-  # Job 2 — Staging Theek Hone Ke Baad Production Pe
+  # Job 2 — Production Deploy
   deploy-production:
     runs-on: ubuntu-latest
     needs: deploy-staging

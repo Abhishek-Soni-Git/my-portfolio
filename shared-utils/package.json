@@ -1,9 +1,8 @@
 {
-  "name": "@abhi/shared-utils",
+  "name": "@abhisheksoni0554/shared-utils",
   "version": "1.0.0",
-  "description": "Reusable utility package for React apps",
   "main": "index.js",
-  "type": "module",
-  "author": "Abhishek",
-  "license": "MIT"
+  "publishConfig": {
+    "registry": "https://pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/"
+  }
 }
