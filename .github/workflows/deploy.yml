@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '18'
 
-      # Install project dependencies from npmjs.org
+      # Install dependencies from npmjs
       - name: Install Dependencies
         run: npm install
 
@@ -34,12 +34,10 @@ jobs:
           echo "registry=https://pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/" > .npmrc
           echo "always-auth=true" >> .npmrc
           echo "//pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/:username=anything" >> .npmrc
-          echo "//pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/:_password=$(echo -n ${{ secrets.AZURE_ARTIFACTS_TOKEN }} | base64)" >> .npmrc
+          echo "//pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/:_password=$(printf "%s" "${{ secrets.AZURE_ARTIFACTS_TOKEN }}" | base64)" >> .npmrc
           echo "//pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/:email=anything@example.com" >> .npmrc
 
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.AZURE_ARTIFACTS_TOKEN }}
+          npm publish --registry https://pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/
 
       # Login to Azure Container Registry
       - name: Login to ACR
