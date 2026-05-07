@@ -15,18 +15,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Azure Artifacts ke liye Node setup
+      # Setup Node
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
           registry-url: 'https://pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/'
 
-      # Dependencies install
+      # Azure Artifacts Authentication
+      - name: Authenticate to Azure Artifacts
+        run: |
+          echo "registry=https://pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/" > ~/.npmrc
+          echo "always-auth=true" >> ~/.npmrc
+          echo "//pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/:username=anything" >> ~/.npmrc
+          echo "//pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/:_password=$(echo -n ${{ secrets.AZURE_ARTIFACTS_TOKEN }} | base64)" >> ~/.npmrc
+          echo "//pkgs.dev.azure.com/abhisheksoni0554/portfolio_li/_packaging/npm_packages/npm/registry/:email=anything@example.com" >> ~/.npmrc
+
+      # Install dependencies
       - name: Install Dependencies
         run: npm install
 
-      # shared-utils package publish
+      # Publish package
       - name: Publish shared-utils
         run: |
           cd shared-utils
@@ -34,7 +43,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.AZURE_ARTIFACTS_TOKEN }}
 
-      # ACR login
+      # Login to ACR
       - name: Login to ACR
         uses: docker/login-action@v2
         with:
@@ -42,7 +51,7 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      # Docker image build & push
+      # Build and Push Docker Image
       - name: Build and push image
         uses: docker/build-push-action@v4
         with:
@@ -53,7 +62,7 @@ jobs:
             VITE_APP_NAME=${{ vars.VITE_APP_NAME }}
             VITE_APP_ENV=${{ vars.VITE_APP_ENV }}
 
-      # Staging deploy
+      # Deploy to staging slot
       - name: Deploy to Staging Slot
         uses: azure/webapps-deploy@v2
         with:
