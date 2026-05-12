@@ -1,38 +1,44 @@
 name: Deploy React App to Azure VM
- 
+
 on:
   push:
     branches:
       - master
- 
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
- 
+
     steps:
- 
       - name: Checkout Code
         uses: actions/checkout@v4
- 
-      # ✅ CHANGE 1: DockerHub ki jagah ACR login
-      - name: Login to Azure Container Registry
-        uses: docker/login-action@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          registry: ${{ secrets.ACR_LOGIN_SERVER }}
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
- 
-      # ✅ CHANGE 2: Image name mein ACR server prefix
-      - name: Build Docker Image
-        run: |
-          docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/react-app:latest .
- 
-      - name: Push Docker Image to ACR
-        run: |
-          docker push ${{ secrets.ACR_LOGIN_SERVER }}/react-app:latest
- 
-      # ✅ CHANGE 3: SSH key ki jagah password, aur ACR se pull
-      - name: Deploy on Azure VM
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build React App
+        run: npm run build
+        env:
+          CI: false
+
+      - name: Copy build to VM
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host:     ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          password: ${{ secrets.VM_PASSWORD }}
+          port:     22
+          source:   "dist/"
+          target:   "/var/www/react-app/"
+          rm:       true
+
+      - name: Reload Nginx
         uses: appleboy/ssh-action@v1.0.3
         with:
           host:     ${{ secrets.VM_HOST }}
@@ -40,25 +46,5 @@ jobs:
           password: ${{ secrets.VM_PASSWORD }}
           port:     22
           script: |
- 
-            # ACR mein login karo (VM ko bhi access chahiye)
-            echo "${{ secrets.ACR_PASSWORD }}" | \
-              docker login ${{ secrets.ACR_LOGIN_SERVER }} \
-              -u ${{ secrets.ACR_USERNAME }} \
-              --password-stdin
- 
-            # Purana container band karo
-            docker stop react-app || true
-            docker rm   react-app || true
- 
-            # ACR se naya image pull karo
-            docker pull ${{ secrets.ACR_LOGIN_SERVER }}/react-app:latest
- 
-            # ✅ CHANGE 4: Port 80:8080 (VM ka 80 → Container ka 3000)
-            docker run -d \
-              --name react-app \
-              --restart unless-stopped \
-              -p 80:8080 \
-              ${{ secrets.ACR_LOGIN_SERVER }}/react-app:latest
- 
-            echo "✅ Deployment Done!"
+            sudo systemctl reload nginx
+            echo "✅ Done!"
