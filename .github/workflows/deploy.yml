@@ -36,7 +36,7 @@ jobs:
           port:     22
           source:   "dist/"
           target:   "/var/www/react-app/"
-          rm:       true
+          rm:        false 
 
       - name: Reload Nginx
         uses: appleboy/ssh-action@v1.0.3
